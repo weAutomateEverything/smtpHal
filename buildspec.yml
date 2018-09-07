@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+    # printenv
+    # pwd
+    - mkdir -p /go/src/github.com/weAutomateEverything/smtpHal
+    - cp -R * /go/src/github.com/weAutomateEverything/smtpHal/
+  pre_build:
+    commands:
+
+    finally:
+
+  build:
+    commands:
+    - go get github.com/weAutomateEverything/go2hal
+    - CGO_ENABLED=0 GOOS=linux go build -o ./main github.com/weAutomateEverything/smtpHal
+  post_build:
+    commands:
+
+    finally:
+
+artifacts:
+  files:
+  - main
+  - Dockerfile
+cache:
+  paths:
