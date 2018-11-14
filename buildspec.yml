@@ -19,7 +19,7 @@ phases:
     -
   post_build:
     commands:
-    - aws s3 sync ./smtphal "s3://smtphal/smtphal"
+    - aws s3 cp ./smtphal "s3://smtphal/smtphal"
 
     finally:
 
