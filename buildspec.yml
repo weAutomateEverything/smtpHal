@@ -19,7 +19,7 @@ phases:
     -
   post_build:
     commands:
-    - aws s3 sync --delete ./smtphal "s3://smtphal/"
+    - aws s3 sync ./smtphal "s3://smtphal/smtphal"
 
     finally:
 
