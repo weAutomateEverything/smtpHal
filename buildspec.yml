@@ -16,8 +16,10 @@ phases:
     commands:
     - go get github.com/weAutomateEverything/smtpHal
     - GOOS=linux go build -ldflags '-linkmode=external' -o ./smtphal github.com/weAutomateEverything/smtpHal
+    -
   post_build:
     commands:
+    - aws s3 sync --delete ./smtphal "s3://smtphal/"
 
     finally:
 
