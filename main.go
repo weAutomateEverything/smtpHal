@@ -42,7 +42,7 @@ func (u *User) Send(from string, to []string, r io.Reader) (err error) {
 	count := 0
 	body := ""
 	for scanner.Scan() {
-		if count < 2 {
+		if count < 1 {
 			if scanner.Text() == "" {
 				count++
 			}
@@ -65,7 +65,7 @@ func (u *User) Send(from string, to []string, r io.Reader) (err error) {
 
 	for _, t := range to {
 		a := strings.Split(t, "@")
-		resp, err := http.Post(fmt.Sprintf("%v/api/alert/%v", os.Getenv("HAL"), a[0]), "application/text", strings.NewReader(body))
+		resp, err := http.Post(fmt.Sprintf("%v/api/alert/%v", os.Getenv("HAL"),a[0]), "application/text", strings.NewReader(body))
 		if err != nil {
 			log.Println(err)
 			continue

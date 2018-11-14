@@ -14,8 +14,8 @@ phases:
 
   build:
     commands:
-    - go get github.com/weAutomateEverything/go2hal
-    - CGO_ENABLED=0 GOOS=linux go build -o ./main github.com/weAutomateEverything/smtpHal
+    - go get github.com/weAutomateEverything/smtpHal
+    - GOOS=linux go build -ldflags '-linkmode=external' -o ./smtphal github.com/weAutomateEverything/smtpHal
   post_build:
     commands:
 
@@ -23,7 +23,6 @@ phases:
 
 artifacts:
   files:
-  - main
-  - Dockerfile
+  - smtphal
 cache:
   paths:
